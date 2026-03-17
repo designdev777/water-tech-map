@@ -459,79 +459,126 @@ function extractJournalArticles(doc) {
 }
 
 // NEW: Generate fallback data based on actual portal content
+// NEW: Generate fallback data based on actual portal content
 function generateFallbackWashData() {
     washPortalData = [
         {
             institution: 'IWMI - Solar Energy for Agricultural Resilience (SoLAR)',
             year: '2025',
-            description: 'Phase II Inception Workshop in Bangladesh focusing on scaling solar irrigation with USD 1.8 billion investment potential.',
+            description: 'Phase II Inception Workshop in Bangladesh focusing on scaling solar irrigation with USD 1.8 billion investment potential. Targets replacement of 1.2 million diesel pumps.',
             type: 'project',
             title: 'Solar Irrigation Scaling in Bangladesh',
-            investmentPotential: 'Medium - Stable government contracts'
+            investmentPotential: 'Medium - Stable government contracts',
+            location: 'Bangladesh'
         },
         {
             institution: 'IWMI - Nigeria Solar Irrigation Study',
             year: '2025',
-            description: 'Co-designing scaling pathways for solar irrigation technology ownership in northern Nigeria with household surveys.',
+            description: 'Co-designing scaling pathways for solar irrigation technology ownership in northern Nigeria. Farmers prefer shared ownership in micro-clusters with harvest-aligned financing.',
             type: 'research',
             title: 'Solar-Based Irrigation Systems in Northern Nigeria',
-            investmentPotential: 'Medium'
+            investmentPotential: 'Medium',
+            location: 'Nigeria'
         },
         {
             institution: 'arXiv Preprint - physics.chem-ph',
             year: '2026',
-            description: 'Hydroxide ion transport in anion-exchange membranes for green hydrogen production studied with machine-learned interatomic potentials.',
+            description: 'Hydroxide ion transport in anion-exchange membranes for green hydrogen production studied with machine-learned interatomic potentials. Water content transforms isolated water clusters into connected hydrogen-bond networks.',
             type: 'preprint',
-            title: 'Hydroxide Transport in Anion-Exchange Membranes'
+            title: 'Hydroxide Transport in Anion-Exchange Membranes',
+            location: 'USA'
         },
         {
             institution: 'arXiv Preprint - cs.CE',
             year: '2026',
-            description: 'Time-dependent modeling framework for autogenous self-healing concrete coupling moisture diffusion with damage evolution.',
+            description: 'Time-dependent modeling framework for autogenous self-healing concrete coupling moisture diffusion with damage evolution. Machine learning models predict healing times with 99.9% accuracy.',
             type: 'preprint',
-            title: 'Self-Healing Concrete Modeling Framework'
+            title: 'Self-Healing Concrete Modeling Framework',
+            location: 'UK'
         },
         {
             institution: 'IWMI - Jordan Refugee Camp Study',
             year: '2025',
-            description: 'Integrated watershed and climate risk hotspot mapping to support adaptation strategies in refugee camp landscapes.',
+            description: 'Integrated watershed and climate risk hotspot mapping to support adaptation strategies in refugee camp landscapes. Combines hydrological analysis, climate projections, and socio-economic indicators.',
             type: 'research',
-            title: 'Water Security in Refugee-Hosting Landscapes'
+            title: 'Water Security in Refugee-Hosting Landscapes',
+            location: 'Jordan'
         },
         {
             institution: 'IWMI - India Agroecology',
             year: '2025',
-            description: 'Agroecological transition pathways for India scaling from homesteads to multifunctional landscapes.',
+            description: 'Agroecological transition pathways for India scaling from homesteads to multifunctional landscapes. Evidence from Akole landscape in Western Ghats.',
             type: 'publication',
-            title: 'Agroecological Transition Pathways for India'
+            title: 'Agroecological Transition Pathways for India',
+            location: 'India'
         },
         {
-            institution: 'PLOS Water',
-            year: 'Mar 17, 2026',
-            description: 'Latest research publication in water science and technology.',
-            type: 'journal',
-            title: 'PLOS Water - Recent Advances'
-        },
-        {
-            institution: 'Nature Water',
-            year: 'Mar 17, 2026',
-            description: 'New findings in water research and technology innovation.',
-            type: 'journal',
-            title: 'Nature Water - Current Issue'
+            institution: 'IWMI - Water and Soil Accelerator (WASA)',
+            year: '2024',
+            description: 'Three-year initiative scaling evidence-based water and soil management practices across rainfed agricultural systems in Malawi and Zambia. Targets one million farmers and one million hectares.',
+            type: 'project',
+            title: 'WASA Malawi-Zambia',
+            investmentPotential: 'Medium - Stable government contracts',
+            location: 'Malawi/Zambia'
         },
         {
             institution: 'IWMI - Ghana Cocoa Study',
             year: '2025',
-            description: 'Pathways to climate-resilient cocoa: solar-powered Irrigation-as-a-Service as an adaptation strategy.',
+            description: 'Pathways to climate-resilient cocoa: solar-powered Irrigation-as-a-Service as an adaptation strategy. Farmers show strong enthusiasm for solar-powered systems through cooperatives.',
             type: 'research',
-            title: 'Solar Irrigation for Cocoa in Ghana'
+            title: 'Solar Irrigation for Cocoa in Ghana',
+            investmentPotential: 'Medium',
+            location: 'Ghana'
         },
         {
             institution: 'IWMI - Kenya Finance Workshop',
             year: '2025',
-            description: 'Co-designing blended finance mechanisms for farmer-led irrigation in Kenya.',
+            description: 'Co-designing blended finance mechanisms for farmer-led irrigation in Kenya. Results-based financing facility and risk-sharing credit facility to de-risk lending.',
             type: 'workshop',
-            title: 'Blended Finance for Irrigation in Kenya'
+            title: 'Blended Finance for Irrigation in Kenya',
+            investmentPotential: 'Medium',
+            location: 'Kenya'
+        },
+        {
+            institution: 'IWMI - Tamil Nadu Climate Action',
+            year: '2025',
+            description: 'CGIAR Climate Action Program in Tamil Nadu addressing droughts, heatwaves, floods, and cyclones. Deploying decision-support tools including SADMS, AWARE, and climate-smart governance dashboards.',
+            type: 'project',
+            title: 'Tamil Nadu Climate Adaptation',
+            investmentPotential: 'Medium - Stable government contracts',
+            location: 'India'
+        },
+        {
+            institution: 'IWMI - Odisha MAR Study',
+            year: '2025',
+            description: 'State-scale spatial suitability assessment for Managed Aquifer Recharge using GIS-based multi-criteria framework. Identifies priority zones for climate-resilient groundwater development.',
+            type: 'research',
+            title: 'Managed Aquifer Recharge in Odisha',
+            location: 'India'
+        },
+        {
+            institution: 'PLOS Water',
+            year: 'Mar 17, 2026',
+            description: 'Latest research publication in water science and technology featuring global water security and climate adaptation studies.',
+            type: 'journal',
+            title: 'PLOS Water - Recent Advances',
+            location: 'Global'
+        },
+        {
+            institution: 'Nature Water',
+            year: 'Mar 17, 2026',
+            description: 'New findings in water research and technology innovation including membrane technologies and water treatment advances.',
+            type: 'journal',
+            title: 'Nature Water - Current Issue',
+            location: 'Global'
+        },
+        {
+            institution: 'International Water Resources Association',
+            year: '2026',
+            description: 'Water International journal featuring research on water science, policy, and governance. Special issue on island water futures and gender equality in water management.',
+            type: 'journal',
+            title: 'Water International - Recent Issue',
+            location: 'Global'
         }
     ];
 }
@@ -654,8 +701,16 @@ function getMarkerColor(type) {
 }
 
 // Show project details in sidebar (unchanged)
+// Show project details in sidebar with impact data
 function showProjectDetails(project) {
     const detailsDiv = document.getElementById('project-details');
+    
+    // Add impact section if available
+    const impactHtml = project.impact ? 
+        `<p style="color: #4a5568; margin-top: 10px;"><i class="fas fa-users"></i> <strong>Impact:</strong> ${project.impact}</p>` : '';
+    
+    const investmentHtml = project.investmentPotential ? 
+        `<p style="color: #92400e; background: #fef3c7; padding: 5px 10px; border-radius: 5px; margin-top: 10px;"><i class="fas fa-chart-line"></i> <strong>Investment Potential:</strong> ${project.investmentPotential}</p>` : '';
     
     detailsDiv.innerHTML = `
         <div style="background: #f7fafc; padding: 15px; border-radius: 8px;">
@@ -664,6 +719,9 @@ function showProjectDetails(project) {
             <p style="color: #718096; margin-bottom: 5px;"><i class="fas fa-tag"></i> ${project.type.charAt(0).toUpperCase() + project.type.slice(1)}</p>
             <p style="color: #48bb78; font-weight: 600; margin-bottom: 5px;"><i class="fas fa-dollar-sign"></i> Total Funding: $${(project.funding / 1000000).toFixed(1)}M</p>
             <p style="color: #718096; margin-bottom: 5px;"><i class="fas fa-circle" style="color: ${project.status === 'active' ? '#48bb78' : '#ecc94b'};"></i> Status: ${project.status}</p>
+            
+            ${investmentHtml}
+            ${impactHtml}
             
             <div style="margin-top: 15px;">
                 <h5 style="color: #4a5568; margin-bottom: 10px;">Research</h5>
