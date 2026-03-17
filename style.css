@@ -429,3 +429,84 @@ header h1 i {
         flex-direction: column;
     }
 }
+
+/* Currency toggle styles */
+.currency-toggle {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    justify-content: flex-end;
+}
+
+.currency-btn {
+    padding: 8px 16px;
+    border: 2px solid #667eea;
+    background: white;
+    color: #667eea;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.currency-btn:hover {
+    background: #667eea;
+    color: white;
+}
+
+.currency-btn-active {
+    background: #667eea;
+    color: white;
+}
+
+/* Update stat cards for better visibility */
+.stat-card {
+    background: #f7fafc;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    flex: 1;
+    min-width: 150px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.stat-value {
+    display: block;
+    font-size: 1.5em;
+    font-weight: 700;
+    color: #2d3748;
+    transition: all 0.3s;
+}
+
+/* Funding source items */
+.funding-source-item {
+    background: #f7fafc;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    border-left: 4px solid #667eea;
+    transition: transform 0.2s;
+}
+
+.funding-source-item:hover {
+    transform: translateX(5px);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.funding-source-item h4 {
+    font-size: 1em;
+    margin-bottom: 5px;
+    color: #2d3748;
+}
+
+.funding-source-item .amount {
+    font-weight: 700;
+    color: #48bb78;
+    margin-bottom: 3px;
+    font-size: 1.1em;
+}
+
+.funding-source-item .type {
+    font-size: 0.9em;
+    color: #718096;
+}
