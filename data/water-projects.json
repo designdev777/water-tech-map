@@ -1,1 +1,32 @@
-
+[
+    {
+        "id": 1,
+        "name": "Solar-Powered Desalination Plant",
+        "type": "desalination",
+        "location": {
+            "lat": 24.7136,
+            "lng": 46.6753,
+            "city": "Riyadh",
+            "country": "Saudi Arabia"
+        },
+        "funding": 45000000,
+        "fundingSources": [
+            {
+                "name": "Saudi Water Authority",
+                "amount": 30000000,
+                "type": "Government"
+            },
+            {
+                "name": "GreenTech Ventures",
+                "amount": 15000000,
+                "type": "Private Equity"
+            }
+        ],
+        "research": {
+            "institution": "King Abdullah University of Science and Technology",
+            "year": 2023,
+            "description": "Developing high-efficiency solar thermal desalination with zero brine discharge"
+        },
+        "status": "active"
+    }
+]
