@@ -436,6 +436,129 @@ function updateYearFilter() {
     });
 }
 
+// Update funding range labels based on currency
+function updateFundingRangeLabels() {
+    const range1 = document.getElementById('range-0-1M');
+    const range2 = document.getElementById('range-1M-10M');
+    const range3 = document.getElementById('range-10M');
+    
+    if (currentCurrency === 'GBP') {
+        // Convert USD ranges to GBP (using same exchange rate)
+        const gbp1M = Math.round(1 * exchangeRate * 10) / 10;
+        const gbp10M = Math.round(10 * exchangeRate * 10) / 10;
+        
+        range1.textContent = `£0 - £${gbp1M}M`;
+        range2.textContent = `£${gbp1M}M - £${gbp10M}M`;
+        range3.textContent = `£${gbp10M}M+`;
+    } else {
+        range1.textContent = '$0 - $1M';
+        range2.textContent = '$1M - $10M';
+        range3.textContent = '$10M+';
+    }
+}
+
+// Update the filter logic to handle GBP ranges correctly
+function filterProjects() {
+    const techType = document.getElementById('tech-filter').value;
+    const fundingRange = document.getElementById('funding-filter').value;
+    const year = document.getElementById('year-filter').value;
+    
+    let filtered = waterProjects;
+    
+    if (techType !== 'all') {
+        filtered = filtered.filter(p => p.type === techType);
+    }
+    
+    if (fundingRange !== 'all') {
+        // Convert funding ranges based on currency
+        let minUSD, maxUSD;
+        
+        if (fundingRange === '0-1M') {
+            minUSD = 0;
+            maxUSD = 1000000;
+        } else if (fundingRange === '1M-10M') {
+            minUSD = 1000000;
+            maxUSD = 10000000;
+        } else if (fundingRange === '10M+') {
+            minUSD = 10000000;
+            maxUSD = Infinity;
+        }
+        
+        // Filter using USD values (since that's what's stored)
+        filtered = filtered.filter(p => p.fundingUSD >= minUSD && p.fundingUSD <= maxUSD);
+    }
+    
+    if (year !== 'all') {
+        filtered = filtered.filter(p => p.research.year.toString() === year);
+    }
+    
+    addMarkers(filtered);
+    updateStats(filtered);
+    
+    if (filtered.length === 0) {
+        document.getElementById('project-details').innerHTML = '<p class="placeholder">No projects match the selected filters</p>';
+        document.getElementById('funding-sources').innerHTML = '<p class="placeholder">No funding sources available</p>';
+    } else {
+        showProjectDetails(filtered[0]);
+    }
+}
+
+// Updated setCurrency function
+window.setCurrency = function(currency) {
+    currentCurrency = currency;
+    
+    // Update toggle buttons
+    document.querySelectorAll('.currency-btn').forEach(btn => {
+        btn.classList.remove('currency-btn-active');
+    });
+    document.querySelectorAll('.currency-btn').forEach(btn => {
+        if (btn.textContent.includes(currency)) {
+            btn.classList.add('currency-btn-active');
+        }
+    });
+    
+    // Update funding range labels
+    updateFundingRangeLabels();
+    
+    // Refresh all displays
+    updateStats(waterProjects);
+    
+    // Get currently selected project or first one
+    const selectedProject = waterProjects[0];
+    if (selectedProject) {
+        showProjectDetails(selectedProject);
+    }
+    
+    // Refresh markers popups
+    markers.forEach(marker => {
+        const project = waterProjects.find(p => 
+            p.location.lat === marker.getLatLng().lat && 
+            p.location.lng === marker.getLatLng().lng
+        );
+        if (project) {
+            marker.setPopupContent(`
+                <b>${project.name}</b><br>
+                ${project.location.city}, ${project.location.country}<br>
+                Type: ${project.type}<br>
+                Funding: ${formatCurrency(project.funding)}
+            `);
+        }
+    });
+};
+
+// Update the initialization
+document.addEventListener('DOMContentLoaded', () => {
+    initMap();
+    updateYearFilter();
+    addCurrencyToggle();
+    updateFundingRangeLabels(); // Initialize with USD labels
+    
+    document.getElementById('tech-filter').addEventListener('change', filterProjects);
+    document.getElementById('funding-filter').addEventListener('change', filterProjects);
+    document.getElementById('year-filter').addEventListener('change', filterProjects);
+});
+
+
 // Format currency based on selected currency - FIXED
 function formatCurrency(amount) {
     if (!amount) return currentCurrency === 'GBP' ? '£0M' : '$0M';
