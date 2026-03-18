@@ -30,13 +30,31 @@
                     <option value="wastewater">Wastewater Treatment</option>
                 </select>
 
-                <label for="funding-filter">Funding Range:</label>
-                <select id="funding-filter">
-                    <option value="all">All Funding</option>
-                    <option value="0-1M">£0 - £1M</option>
-                    <option value="1M-10M">£1M - £10M</option>
-                    <option value="10M+">£10M+</option>
-                </select>
+                <div class="filter-section">
+                    <label for="tech-filter">Technology Type:</label>
+                    <select id="tech-filter">
+                        <option value="all">All Technologies</option>
+                        <option value="purification">Water Purification</option>
+                        <option value="monitoring">Water Monitoring</option>
+                        <option value="conservation">Water Conservation</option>
+                        <option value="desalination">Desalination</option>
+                        <option value="wastewater">Wastewater Treatment</option>
+                    </select>
+                
+                    <label for="funding-filter">Funding Range:</label>
+                    <select id="funding-filter">
+                        <option value="all">All Funding</option>
+                        <option value="0-1M" id="range-0-1M">$0 - $1M</option>
+                        <option value="1M-10M" id="range-1M-10M">$1M - $10M</option>
+                        <option value="10M+" id="range-10M">$10M+</option>
+                    </select>
+                
+                    <label for="year-filter">Research Year:</label>
+                    <select id="year-filter">
+                        <option value="all">All Years</option>
+                        <!-- Years will be populated dynamically -->
+                    </select>
+                </div>
 
                 <label for="year-filter">Research Year:</label>
                 <select id="year-filter">
